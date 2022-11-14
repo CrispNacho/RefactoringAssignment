@@ -3,3 +3,4 @@ class BridgeRefactoring {
         System.out.println("hello");
     }
 }
+
