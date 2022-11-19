@@ -13,9 +13,11 @@ public class CompareData {
         this.studentInfo = studentInfo;
     }
 
-    public void generateScoreList() {
+    public ArrayList<ArrayList<String>> generateScoreList() {
         createEmptyScoreList();
         compareStudents();
+
+        return scores;
     }
 
     private void createEmptyScoreList() {
