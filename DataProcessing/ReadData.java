@@ -4,16 +4,46 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReadData {
+abstract class ReadData {
     private String fileName;
-    protected ArrayList<String> data = new ArrayList<String>();
-
+    protected ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
+    
     public void StoreData(){
+       
+        BufferedReader br = null;
+            try{
+            br = new BufferedReader(new FileReader(fileName));
+            String contentLine = br.readLine();
+            while (contentLine != null){
+                
+                addContentLine(contentLine);
+                contentLine = br.readLine();
+                
 
+            }
+        }
+        catch (IOException ioe) 
+        {
+        ioe.printStackTrace();
+        }
+        finally{
+        try{
+        if (br!= null){
+            br.close();
+        }
+        }
+        catch (IOException ioe){
+            System.out.println("error in closing the buffered reader");
+        }
     }
-    public void addContentLine(String contentLine){
-        data.add(contentLine);
     }
+    public ArrayList<ArrayList<String>> getArray(){
+        return data;
+    }
+
+    abstract void addContentLine(String contentLine);
+
+
 
     
 
