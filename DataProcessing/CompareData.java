@@ -13,11 +13,12 @@ public class CompareData {
         this.studentInfo = studentInfo;
     }
 
-    public void calculateScores() {
-        createScoreArray();
+    public void generateScoreList() {
+        createEmptyScoreList();
+        compareStudents();
     }
 
-    private void createScoreArray() {
+    private void createEmptyScoreList() {
         scores = new ArrayList<ArrayList<String>>();
         for (ArrayList<String> row: studentInfo) {
             // Set empty score for each student
@@ -26,21 +27,33 @@ public class CompareData {
         }
     }
 
-    private void compare() {
-        for (int student = 0; student < studentResponses.size(); student++) {
+    private void compareStudents() {
+        for (int i = 0; i < studentResponses.size(); i++) {
             // Starting score of 0
-			int score = 0;
-            int infoIndex = studentInfo.size();
+			int score = calculateScore(i);
 
-			for (int q = infoIndex; q < studentResponses.get(student).size(); q++) {
-				// Add 1 score for each question they get correct
-				if (studentResponses.get(student).get(q).toLowerCase().equals(solutions.get(q-infoIndex).toLowerCase())) {
-					score++;
-				}
-			}
-
-            int lastIndex = scores.get(student).size() - 1;
-			scores.get(student).set(lastIndex, String.valueOf(score));
+            // Write down the score onto the main score list
+            ArrayList<String> scoreRow = scores.get(i);
+            scoreRow.set(scoreRow.size() - 1, String.valueOf(score));
         }
+    }
+
+    private int calculateScore(int i) {
+        int score = 0;
+        // Get the index when the student info (email, number) ends
+        // In order to know when the student answer responses start.
+        int infoIndex = studentInfo.size();
+
+        for (int q = infoIndex; q < studentResponses.get(i).size(); q++) {
+            // Add 1 score for each question they get correct
+            String response = studentResponses.get(i).get(q);
+            String solution = solutions.get(q-infoIndex);
+
+            if (response.toLowerCase().equals(solution.toLowerCase())) {
+                score++;
+            }
+        }
+
+        return score;
     }
 }
