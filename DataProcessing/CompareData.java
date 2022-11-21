@@ -2,12 +2,12 @@ package DataProcessing;
 import java.util.ArrayList;
 
 public class CompareData {
-    private ArrayList<String> solutions;
+    private ArrayList<ArrayList<String>> solutions;
     private ArrayList<ArrayList<String>> studentResponses;
     private ArrayList<ArrayList<String>> scores;
     private ArrayList<ArrayList<String>> studentInfo;
 
-    public CompareData(ArrayList<String> solutions, ArrayList<ArrayList<String>> studentResponses, ArrayList<ArrayList<String>> studentInfo) {
+    public CompareData(ArrayList<ArrayList<String>> solutions, ArrayList<ArrayList<String>> studentResponses, ArrayList<ArrayList<String>> studentInfo) {
         this.solutions = solutions;
         this.studentResponses = studentResponses;
         this.studentInfo = studentInfo;
@@ -42,16 +42,21 @@ public class CompareData {
 
     private int calculateScore(int i) {
         int score = 0;
-        // Get the index when the student info (email, number) ends
-        // In order to know when the student answer responses start.
-        int infoIndex = studentInfo.size();
+        // Get the index of when the student info column ends
+        int infoIndex = studentInfo.get(i).size() - 1;
+
+        System.out.println(i);
+        System.out.println(infoIndex);
+        System.out.println(studentResponses.get(i).size());
 
         for (int q = infoIndex; q < studentResponses.get(i).size(); q++) {
-            // Add 1 score for each question they get correct
             String response = studentResponses.get(i).get(q);
-            String solution = solutions.get(q-infoIndex);
+            String solution = solutions.get(q-infoIndex).get(0);
+            System.out.println("response: " + response);
+            System.out.println("solution: " + solution);
 
             if (response.toLowerCase().equals(solution.toLowerCase())) {
+                // Add 1 score for each question they get correct
                 score++;
             }
         }

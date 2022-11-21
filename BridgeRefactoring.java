@@ -1,19 +1,24 @@
+import javax.swing.RepaintManager;
+
 import DataProcessing.ReadQuestionAndAnswerData;
 import DataProcessing.ReadStudentResponseOrStudentData;
+import DataProcessing.CompareData;
+import java.util.ArrayList;
 
 class BridgeRefactoring {
     public static void main(String[] args) {
         System.out.println("hillo");
-        ReadStudentResponseOrStudentData test1 = new ReadStudentResponseOrStudentData("Data/response_data/student_data_q1_response.csv");
-        ReadQuestionAndAnswerData test2 = new ReadQuestionAndAnswerData("Data/answer_data/sample_a_2.txt");
-        test1.StoreData();     
-        test2.StoreData();
+        ReadStudentResponseOrStudentData studentInfo = new ReadStudentResponseOrStudentData("Data/student_data/student_data_2.csv");
+        ReadStudentResponseOrStudentData response = new ReadStudentResponseOrStudentData("Data/response_data/student_data_2_q1_response.csv");
+        ReadQuestionAndAnswerData answers = new ReadQuestionAndAnswerData("Data/answer_data/sample_a_2.txt");
+        studentInfo.StoreData();     
+        response.StoreData();
+        answers.StoreData();
+        response.removeHeader();
+        studentInfo.removeHeader();
         
-        //test1.removeHeader();
-        System.out.println(test1.getArray());
-        System.out.println(test2.getArray());
-
-
+        CompareData comparer = new CompareData(answers.getArray(), response.getArray(), studentInfo.getArray());
+        System.out.println(comparer.generateScoreList());
     }
 }
 
