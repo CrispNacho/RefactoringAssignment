@@ -9,16 +9,30 @@ public class SolveData {
      * 4. Set it through the Guassian equation
      * 5. Export an answer list
      */
-    private ArrayList<ArrayList<String>> equations;
-    private ArrayList<String> variables;
+    private ArrayList<String> equations;
+    private ArrayList<String> varList = new ArrayList<String>();
 
-    public SolveData(ArrayList<ArrayList<String>> equations) {
+    public SolveData() {
+    }
+
+    public void setEquations(ArrayList<String> equations) {
         this.equations = equations;
     }
 
-    
-
-    private void getVariables() {
-
+    public void createMatrix() {
+        getVariables(equations);
     }
+
+    private ArrayList<String> getVariables(ArrayList<String> equations) {
+        String equation = equations.get(0);
+
+		// Add each variable found into the array
+		for (int index=0; index<equation.length(); index++) {
+			if (Character.isLetter(equation.charAt(index))) {
+				varList.add(equation.substring(index, index+1));
+			}
+		}
+
+		return varList;
+	}
 }
