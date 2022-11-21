@@ -20,9 +20,7 @@ abstract class ReadData {
                 
                 contentLine = br.readLine();
                 
-
             }
-            addContentLine(contentLine);
 
 
         }
