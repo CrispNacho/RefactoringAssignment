@@ -2,29 +2,24 @@ package DataProcessing;
 import java.util.ArrayList;
 
 public class SolveData {
-    /**
-     * 1. Receive (Constructor)
-     * 2. Create list for all variables present (Note: maybe some seperate methods)
-     * 3. Convert the equations into matrix form (Note: Probably many mini methods here too)
-     * 4. Set it through the Guassian equation
-     * 5. Export an answer list
-     */
-    private ArrayList<String> equations;
-    private ArrayList<String> varList = new ArrayList<String>();
+    private ArrayList<String> equationsList = new ArrayList<String>();
 
-    public SolveData() {
+    public void setEquations(ArrayList<String> equationsList) {
+        this.equationsList = equationsList;
     }
 
-    public void setEquations(ArrayList<String> equations) {
-        this.equations = equations;
+    public void createNewMatrix() {
+        ArrayList<String> varList = getVariables();
+        equationToMatrix(varList);
     }
 
-    public void createMatrix() {
-        getVariables(equations);
+    public void getAnswers() {
+
     }
 
-    private ArrayList<String> getVariables(ArrayList<String> equations) {
-        String equation = equations.get(0);
+    private ArrayList<String> getVariables() {   
+        String equation = equationsList.get(0);
+        ArrayList<String> varList = new ArrayList<String>();
 
 		// Add each variable found into the array
 		for (int index=0; index<equation.length(); index++) {
@@ -35,4 +30,8 @@ public class SolveData {
 
 		return varList;
 	}
+
+    private void equationToMatrix(ArrayList<String> varList) {
+        
+    }
 }
