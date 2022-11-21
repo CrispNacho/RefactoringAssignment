@@ -7,7 +7,7 @@ public class ReadQuestionAndAnswerData extends ReadData{
     protected void addContentLine(String contentLine){
         if(!contentLine.isEmpty()){
             if(contentLine.contains("=") || contentLine.contains("/")){
-                data.get(questionCount).add(contentLine);
+                data.get(questionCount).add(cleanData(contentLine));
 
             }
             else{
@@ -16,6 +16,9 @@ public class ReadQuestionAndAnswerData extends ReadData{
                 
             }
         }   
+    }
+    private String cleanData(String text) {
+        return text.replaceAll("\\s+","").toLowerCase();
     }
     public ReadQuestionAndAnswerData(String fileName){
         super(fileName);
