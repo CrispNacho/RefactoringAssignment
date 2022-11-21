@@ -17,10 +17,14 @@ abstract class ReadData {
             while (contentLine != null){
                 
                 addContentLine(contentLine);
+                
                 contentLine = br.readLine();
                 
 
             }
+            addContentLine(contentLine);
+
+
         }
         catch (IOException ioe) 
         {
@@ -41,7 +45,7 @@ abstract class ReadData {
         return data;
     }
 
-    abstract void addContentLine(String contentLine);
+    abstract protected void addContentLine(String contentLine);
 
 
 

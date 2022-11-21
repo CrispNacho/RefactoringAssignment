@@ -1,29 +1,39 @@
 package DataProcessing;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ReadQuestionAndAnswerData extends ReadData{
-    ArrayList<String> contentRow = new ArrayList<String>();
-    public void addContentLine(String contentLine){
-
-        if(!contentLine.isEmpty()){
-        if(Character.isLetter(contentLine.charAt(0)) && Character.isDigit(contentLine.charAt(1))){
-            if(Character.toLowerCase(contentLine.charAt(0)) == 'q' || Character.toLowerCase(contentLine.charAt(0)) == 'a'){
-
-            data.add(contentRow);
-            contentRow.clear();
-        }else {
-            contentRow.add(contentLine);
-        } 
-            
+    private ArrayList<String> contentRow = new ArrayList<String>();
+    private int count = 0;
+    protected void addContentLine(String contentLine){
+        if (contentLine == null){
+            data.add((ArrayList)contentRow.clone());
         }
-        else{
-            
-            contentRow.add(contentLine);
+        
+        else if(!contentLine.isEmpty()){
+            if(contentLine.contains("=") || contentLine.contains("/")){
+                contentRow.add(contentLine);
+
+            }
+            else{
+                
+                if(count > 0){
+                data.add((ArrayList)contentRow.clone());
+                contentRow.clear();
+                }
+                count++;
+                
+            }
         }
-    }
+        
     }
     public ReadQuestionAndAnswerData(String fileName){
         super(fileName);
+    
+}
+public ArrayList<ArrayList<String>> getArray(){
+
+    return data;
     
 }
 }
