@@ -34,13 +34,12 @@ public class SolveData {
 			  }
 			}
 		  }
-
-          System.out.println(matrix);
 		 
 		// Backward Elimination
 		// matrix[][matrixLen] use matrixLen value 
 		// to get the index of the last column (where the constants are stored)
         answers.set(matrixSize-1, matrix.get(matrixSize-1).get(matrixSize) / matrix.get(matrixSize-1).get(matrixSize-1));
+
 		for(int i = matrixSize - 2; i > -1; i--) {
 			Double sum = matrix.get(i).get(matrixSize);
 			for(int j=i+1; j<matrixSize; j++) {
@@ -100,6 +99,7 @@ public class SolveData {
                      constant += partOfConstant;
                 }
                 else if (Character.isLetter(splitByOperatorRaw[j].charAt(splitByOperatorRaw[j].length() - 1))){
+                    coefficient = 1.0; 
                     if (splitByOperatorRaw[j].length() > 1){
                         coefficient = Double.parseDouble(splitByOperatorRaw[j].substring(0,(splitByOperatorRaw[j].length() - 1)));
                     }
