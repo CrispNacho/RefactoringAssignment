@@ -27,7 +27,6 @@ class BridgeRefactoring {
         SolveData solver = new SolveData();
         ArrayList<ArrayList<String>> list = questions.getArray();
         solver.setEquations(list.get(0));
-        solver.createNewMatrix();
     }
 }
 

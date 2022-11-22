@@ -72,17 +72,17 @@ public class SolveData {
 		return varList;
 	}
 
-    private ArrayList<ArrayList<Integer>> equationToMatrix(ArrayList<String> varList) {
-        ArrayList<ArrayList<Integer>> matrix = new ArrayList<ArrayList<Integer>>();
+    private ArrayList<ArrayList<Double>> equationToMatrix(ArrayList<String> varList) {
+        ArrayList<ArrayList<Double>> matrix = new ArrayList<ArrayList<Double>>();
 
     for(int i = 0; i < equationsList.size(); i++){ // iterate through every equation
         matrix.add(new ArrayList<>());
         for(int j = 0; j < varList.size(); j++){
-            matrix.get(i).add(0);
+            matrix.get(i).add(0.0);
         }
         int partOfConstant;
-        int constant = 0;
-        int coefficient = 1;
+        double constant = 0;
+        double coefficient = 1;
         boolean passedEqualSign = false;
         String[] splitByOperatorRaw =  equationsList.get(i).toLowerCase().split(String.format("((?<=%1$s)|(?=%1$s))", "[-+=]"));
             for(int j = 0; j < splitByOperatorRaw.length; j++){
@@ -101,7 +101,7 @@ public class SolveData {
                 }
                 else if (Character.isLetter(splitByOperatorRaw[j].charAt(splitByOperatorRaw[j].length() - 1))){
                     if (splitByOperatorRaw[j].length() > 1){
-                        coefficient = Integer.parseInt(splitByOperatorRaw[j].substring(0,(splitByOperatorRaw[j].length() - 1)));
+                        coefficient = Double.parseDouble(splitByOperatorRaw[j].substring(0,(splitByOperatorRaw[j].length() - 1)));
                     }
                     if(passedEqualSign){
                         coefficient = coefficient * -1;
