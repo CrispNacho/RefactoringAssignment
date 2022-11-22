@@ -1,16 +1,21 @@
 package DataProcessing;
-import java.util.ArrayList;
-import java.util.Arrays;    
+import java.util.ArrayList;   
 import java.util.Collections;
 
 public class SolveData {
+
     private ArrayList<String> equationsList = new ArrayList<String>();
 
-    
+    /**
+   * *Sets the equations needed for solving
+   * *@param equationsList is the list of equations used
+   * */
     public void setEquations(ArrayList<String> equationsList) {
         this.equationsList = equationsList;
     }
 
+
+    //Establishes and creates the solution list to get needed solutions
     public ArrayList<String> createSolutionList() {
         ArrayList<String> varList = getVariables();
         
@@ -19,6 +24,11 @@ public class SolveData {
         return getSolutions(matrix, varList);
     }
 
+    /**
+   * *Sets the equations needed for solving
+   * *@param matrix is the way in which we solve the questions
+   * *@param varList is the list of variables used in the data
+   * */
     public ArrayList<String> getSolutions(ArrayList<ArrayList<Double>> matrix, ArrayList<String> varList) {
         // Size of matrix without constants
         int matrixSize = varList.size();
@@ -30,10 +40,10 @@ public class SolveData {
 			for(int j = i + 1; j < matrixSize; j++) {
 			  Double factorRatio  = matrix.get(j).get(i) / matrix.get(i).get(i);
 			  for(int k=i; k<matrixSize+1; k++) {
-				matrix.get(j).set(k, matrix.get(j).get(k) - factorRatio * matrix.get(i).get(k));
-			  }
-			}
-		  }
+                matrix.get(j).set(k, matrix.get(j).get(k) - factorRatio * matrix.get(i).get(k));
+            }
+          }
+        }
 		 
 		// Backward Elimination
 		// matrix[][matrixLen] use matrixLen value 
@@ -57,6 +67,7 @@ public class SolveData {
         return polishedAnswers;
     }
 
+    //Obtains the different variables needed for solving
     private ArrayList<String> getVariables() {   
         String equation = equationsList.get(0);
         ArrayList<String> varList = new ArrayList<String>();
@@ -71,6 +82,10 @@ public class SolveData {
 		return varList;
 	}
 
+   /**
+   * *Gives the equation to the matrix for solving
+   * *@param varList is the list of variables in the data that is used
+   * */
     private ArrayList<ArrayList<Double>> equationToMatrix(ArrayList<String> varList) {
         ArrayList<ArrayList<Double>> matrix = new ArrayList<ArrayList<Double>>();
 
