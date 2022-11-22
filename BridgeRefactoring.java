@@ -2,6 +2,7 @@ import javax.swing.RepaintManager;
 
 import DataProcessing.ReadQuestionAndAnswerData;
 import DataProcessing.ReadStudentResponseOrStudentData;
+import DataProcessing.CleanData;
 import DataProcessing.CompareData;
 import DataProcessing.SolveData;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ class BridgeRefactoring {
         SolveData solver = new SolveData();
         ArrayList<ArrayList<String>> list = questions.getArray();
         solver.setEquations(list.get(0));
+        solver.createNewMatrix();
     }
 }
 

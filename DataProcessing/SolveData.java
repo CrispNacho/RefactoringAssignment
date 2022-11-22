@@ -6,6 +6,7 @@ public class SolveData {
     private ArrayList<String> equationsList = new ArrayList<String>();
     protected ArrayList<ArrayList<Integer>> matrix = new ArrayList<ArrayList<Integer>>();
 
+    
     public void setEquations(ArrayList<String> equationsList) {
         this.equationsList = equationsList;
     }
