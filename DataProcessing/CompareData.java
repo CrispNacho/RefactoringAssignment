@@ -19,7 +19,7 @@ public class CompareData {
         this.studentInfo = studentInfo;
     }
 
-    //
+    //Generates the score for the user
     public ArrayList<ArrayList<String>> generateScoreList() {
         createEmptyScoreList();
         compareStudents();
@@ -27,6 +27,7 @@ public class CompareData {
         return scores;
     }
 
+    //Establishes an empty score list
     private void createEmptyScoreList() {
         scores = new ArrayList<ArrayList<String>>();
         for (ArrayList<String> row: studentInfo) {
@@ -36,6 +37,7 @@ public class CompareData {
         }
     }
 
+    //Compares the student data
     private void compareStudents() {
         for (int i = 0; i < studentResponses.size(); i++) {
             // Starting score of 0
@@ -47,6 +49,11 @@ public class CompareData {
         }
     }
 
+
+    /**
+   * *Calculates the score through comparisons
+   * *@param i reference variable
+   * */
     private int calculateScore(int i) {
         int score = 0;
         // Get the index of when the student info column ends
