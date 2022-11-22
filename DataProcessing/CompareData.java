@@ -7,12 +7,19 @@ public class CompareData {
     private ArrayList<ArrayList<String>> scores;
     private ArrayList<ArrayList<String>> studentInfo;
 
+     /**
+   * *Compares all data entered
+   * *@param solutions refers to the solutions of each question
+   *  @param studentResponses refers to the response of each student for each question
+   *  @param studentInfo refers to the information of each student such as name, email, and etc.
+   * */
     public CompareData(ArrayList<ArrayList<String>> solutions, ArrayList<ArrayList<String>> studentResponses, ArrayList<ArrayList<String>> studentInfo) {
         this.solutions = solutions;
         this.studentResponses = studentResponses;
         this.studentInfo = studentInfo;
     }
 
+    //
     public ArrayList<ArrayList<String>> generateScoreList() {
         createEmptyScoreList();
         compareStudents();
