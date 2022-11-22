@@ -12,9 +12,9 @@ public class ExportData {
    * *Takes the score array where the student data is with the score and prints the array in a seperate file
    * *@param scoreArray is a two dimentional array that has student data but, with the student scores (adding the student score to the end of the array)
    * */
-    public void writingToScoreFile(ArrayList<ArrayList<String>> scoreArrayList, String heading) {
+    public void writingToScoreFile(ArrayList<ArrayList<String>> scoreArrayList, String fileName, String heading) {
 		//Establishes the file name
-		File file = new File("score.csv");
+		File file = new File(fileName);
 		try{
 			FileWriter fw = new FileWriter(file);
 			Writer output = new BufferedWriter(fw);
