@@ -15,7 +15,7 @@ abstract class ReadData {
             br = new BufferedReader(new FileReader(fileName));
             String contentLine = br.readLine();
             while (contentLine != null){
-                
+                contentLine = contentLine.replaceAll("\\s+","").toLowerCase();
                 addContentLine(contentLine);
                 
                 contentLine = br.readLine();
