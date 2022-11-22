@@ -24,18 +24,18 @@ abstract class ReadData {
         }
         catch (IOException ioe) 
         {
-        ioe.printStackTrace();
+            ioe.printStackTrace();
         }
         finally{
-        try{
-        if (br!= null){
-            br.close();
+            try{
+                if (br!= null){
+                    br.close();
+                }
+            }
+            catch (IOException ioe){
+                System.out.println("error in closing the buffered reader");
+            }
         }
-        }
-        catch (IOException ioe){
-            System.out.println("error in closing the buffered reader");
-        }
-    }
     }
 
     //Gets the array
@@ -43,13 +43,21 @@ abstract class ReadData {
         return data;
     }
 
+    /**
+   * *Adds the contentline to the data
+   * *@param contentLine looks at the data of each individual line
+   * */
     abstract protected void addContentLine(String contentLine);
 
-    
+    /**
+   * *Cleans the desired data
+   * *@param text the data that is to be cleaned by removing whitespaces and changing to lowercase
+   * */
     public String cleanData(String text) {
         //Replaces whitespace characters and changes the data to lower case, cleans the data as a whole
         return text.replaceAll("\\s+","").toLowerCase();
     }
+
     /**
    * *Reads the data from the file
    * *@param fileName the name of the desired file entered by the user
