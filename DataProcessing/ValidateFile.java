@@ -4,25 +4,35 @@ import java.io.File;
 
 
 public class ValidateFile {
+    Scanner reader = new Scanner(System.in);
+    
     /**
-   * *Validates the user input of the file to see if it is a real file
-   * *@param userInput is the file names the user may enter
+   * *Validates the user input of the file and is repeatedly asked until the file is valid
+   * *@param question the question that is asked to the user
    * */
-    public void fileValidation(String userInput){
-        File file = new File(userInput);
-        if(file.exists()){
-            return;
+    public String fileValidation(String question){
+        System.out.println(question);
+        String userInput = reader.nextLine();
+
+        File fileChecker = new File(userInput);
+        while(!fileChecker.exists()){
+            System.out.println("Try Again: ");
+            userInput = reader.nextLine();
+            fileChecker = new File(userInput);
         }
-        else{
-            Scanner reader = new Scanner(System.in);
-            File fileCheckAgain = new File(userInput);
-            while(!fileCheckAgain.exists()){
-                System.out.println("Try Again: ");
-                userInput = reader.nextLine();
-                fileCheckAgain = new File(userInput);
-            }
-            reader.close();
-            return;
+
+        return userInput;
+    }
+
+    public String responseValidation() {
+        System.out.println("Do you want to get question or answer (Q/A)?: ");
+        String userInput = reader.nextLine();
+
+        while (!userInput.toLowerCase().equals("q") && !userInput.toLowerCase().equals("a")) {
+            System.out.println("Try Again...");
+            userInput = reader.nextLine();
         }
+
+        return userInput;
     }
 }

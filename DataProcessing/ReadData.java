@@ -9,14 +9,12 @@ abstract class ReadData {
     protected ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
     
     //Stores the data into teh data structure
-    public void StoreData(){
+    public void storeData(){
         BufferedReader br = null;
             try{
             br = new BufferedReader(new FileReader(fileName));
             String contentLine = br.readLine();
             while (contentLine != null){
-                contentLine = cleanData(contentLine);
-                contentLine = contentLine.replaceAll("\\s+","").toLowerCase();
                 addContentLine(contentLine);
                 
                 contentLine = br.readLine();
@@ -46,7 +44,7 @@ abstract class ReadData {
     abstract protected void addContentLine(String contentLine);
 
     
-    public String cleanData(String text) {
+    protected String cleanData(String text) {
         //Replaces whitespace characters and changes the data to lower case, cleans the data as a whole
         return text.replaceAll("\\s+","").toLowerCase();
     }

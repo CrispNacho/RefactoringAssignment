@@ -9,6 +9,7 @@ public class ReadQuestionAndAnswerData extends ReadData{
    * *@param contentLine is the term used to decribe the data
    * */
     protected void addContentLine(String contentLine){
+        cleanData(contentLine);
         if(!contentLine.isEmpty()){
             if(contentLine.contains("=") || contentLine.contains("/")){
                 data.get(questionCount).add(contentLine);
