@@ -6,6 +6,7 @@ import java.util.Collections;
 public class SolveData {
     private ArrayList<String> equationsList = new ArrayList<String>();
 
+    
     public void setEquations(ArrayList<String> equationsList) {
         this.equationsList = equationsList;
     }

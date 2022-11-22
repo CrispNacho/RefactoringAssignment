@@ -9,10 +9,9 @@ import java.util.ArrayList;
 public class ExportData {
 
    /**
-   * *Prints the 2D array with the student data and student scores to a seperate file
+   * *Takes the score array where the student data is with the score and prints the array in a seperate file
    * *@param scoreArray is a two dimentional array that has student data but, with the student scores (adding the student score to the end of the array)
    * */
-	//Takes the score array where the student data is with the score and prints the array in a seperate file
     public void writingToScoreFile(ArrayList<ArrayList<String>> scoreArrayList, String heading) {
 		//Establishes the file name
 		File file = new File("score.csv");

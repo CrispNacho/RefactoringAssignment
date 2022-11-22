@@ -8,12 +8,14 @@ abstract class ReadData {
     private String fileName;
     protected ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
     
+    //Stores the data into teh data structure
     public void StoreData(){
         BufferedReader br = null;
             try{
             br = new BufferedReader(new FileReader(fileName));
             String contentLine = br.readLine();
             while (contentLine != null){
+                contentLine = cleanData(contentLine);
                 contentLine = contentLine.replaceAll("\\s+","").toLowerCase();
                 addContentLine(contentLine);
                 
@@ -36,14 +38,23 @@ abstract class ReadData {
     }
     }
 
+    //Gets the array
     public ArrayList<ArrayList<String>> getArray(){
         return data;
     }
 
     abstract protected void addContentLine(String contentLine);
 
+    
+    public String cleanData(String text) {
+        //Replaces whitespace characters and changes the data to lower case, cleans the data as a whole
+        return text.replaceAll("\\s+","").toLowerCase();
+    }
+    /**
+   * *Reads the data from the file
+   * *@param fileName the name of the desired file entered by the user
+   * */
     public ReadData(String filename){
         this.fileName = filename;   
     }
-    
 }
