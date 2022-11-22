@@ -4,7 +4,11 @@ import java.io.File;
 
 
 public class ValidateFile {
-    public static void fileValidation(String userInput){
+    /**
+   * *Validates the user input of the file to see if it is a real file
+   * *@param userInput is the file names the user may enter
+   * */
+    public void fileValidation(String userInput){
         File file = new File(userInput);
         if(file.exists()){
             return;
