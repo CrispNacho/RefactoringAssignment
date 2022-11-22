@@ -52,15 +52,9 @@ public class CompareData {
         // Get the index of when the student info column ends
         int infoIndex = studentInfo.get(i).size() - 1;
 
-        System.out.println(i);
-        System.out.println(infoIndex);
-        System.out.println(studentResponses.get(i).size());
-
         for (int q = infoIndex; q < studentResponses.get(i).size(); q++) {
             String response = studentResponses.get(i).get(q);
             String solution = solutions.get(q-infoIndex).get(0);
-            System.out.println("response: " + response);
-            System.out.println("solution: " + solution);
 
             if (response.toLowerCase().equals(solution.toLowerCase())) {
                 // Add 1 score for each question they get correct
