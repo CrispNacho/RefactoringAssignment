@@ -9,8 +9,10 @@ import java.util.ArrayList;
 public class ExportData {
 
    /**
-   * *Takes the score array where the student data is with the score and prints the array in a seperate file
-   * *@param scoreArray is a two dimentional array that has student data but, with the student scores (adding the student score to the end of the array)
+   * *Takes the score ArrayList anf prints it in a seperate file
+   * *@param scoreArrayList is an ArrayList that has score data to be written to a file
+   * *@param fileName is the name of the file that is desired to be written to
+   * *@param heading is the variable used for the for loop that outputs to the file
    * */
     public void writingToScoreFile(ArrayList<ArrayList<String>> scoreArrayList, String fileName, String heading) {
 		//Establishes the file name
