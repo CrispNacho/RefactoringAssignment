@@ -9,7 +9,6 @@ abstract class ReadData {
     protected ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
     
     public void StoreData(){
-       
         BufferedReader br = null;
             try{
             br = new BufferedReader(new FileReader(fileName));
@@ -19,10 +18,7 @@ abstract class ReadData {
                 addContentLine(contentLine);
                 
                 contentLine = br.readLine();
-                
             }
-
-
         }
         catch (IOException ioe) 
         {
@@ -39,15 +35,12 @@ abstract class ReadData {
         }
     }
     }
+
     public ArrayList<ArrayList<String>> getArray(){
         return data;
     }
 
     abstract protected void addContentLine(String contentLine);
-
-
-
-    
 
     public ReadData(String filename){
         this.fileName = filename;   
