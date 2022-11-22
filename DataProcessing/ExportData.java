@@ -1,5 +1,4 @@
 package DataProcessing;
-import java.io.IOException;
 import java.io.File;
 import java.io.Writer;
 import javax.swing.JOptionPane;
