@@ -15,8 +15,7 @@ abstract class ReadData {
             br = new BufferedReader(new FileReader(fileName));
             String contentLine = br.readLine();
             while (contentLine != null){
-                contentLine = cleanData(contentLine);
-                contentLine = contentLine.replaceAll("\\s+","").toLowerCase();
+                contentLine = cleanData(contentLine);    
                 addContentLine(contentLine);
                 
                 contentLine = br.readLine();
@@ -55,7 +54,7 @@ abstract class ReadData {
    * */
     public String cleanData(String text) {
         //Replaces whitespace characters and changes the data to lower case, cleans the data as a whole
-        return text.replaceAll("\\s+","").toLowerCase();
+        return text.replaceAll("\\s+","");
     }
 
     /**
