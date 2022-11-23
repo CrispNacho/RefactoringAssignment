@@ -15,6 +15,7 @@ abstract class ReadData {
             br = new BufferedReader(new FileReader(fileName));
             String contentLine = br.readLine();
             while (contentLine != null){
+                contentLine = cleanData(contentLine);    
                 addContentLine(contentLine);
                 
                 contentLine = br.readLine();

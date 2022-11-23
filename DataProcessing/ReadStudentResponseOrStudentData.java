@@ -18,10 +18,7 @@ public class ReadStudentResponseOrStudentData extends ReadData{
         data.remove(0);
     }
 
-    /**
-   * *Reads the student response or student data
-   * *@param contentLine is the data that will be read
-   * */
+    //Constructor Method
     public ReadStudentResponseOrStudentData(String fileName){
         super(fileName);
     }

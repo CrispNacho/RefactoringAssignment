@@ -78,7 +78,7 @@ public class SolveData {
 				varList.add(equation.substring(index, index+1));
 			}
 		}
-
+        
 		return varList;
 	}
 
@@ -91,52 +91,43 @@ public class SolveData {
 
     for(int i = 0; i < equationsList.size(); i++){ // iterate through every equation
         matrix.add(new ArrayList<>());
-        for(int j = 0; j < varList.size(); j++){
+        for(int j = 0; j < varList.size(); j++){// populates the arraylist with empty values 
             matrix.get(i).add(0.0);
         }
         int partOfConstant;
         double constant = 0;
         double coefficient = 1;
         boolean passedEqualSign = false;
-        String[] splitByOperatorRaw =  equationsList.get(i).toLowerCase().split(String.format("((?<=%1$s)|(?=%1$s))", "[-+=]"));
-            for(int j = 0; j < splitByOperatorRaw.length; j++){
-                if(splitByOperatorRaw[j].matches("[0-9]+")){
-                    partOfConstant = Integer.parseInt(splitByOperatorRaw[j]);
-                    try{
-                        if(splitByOperatorRaw[j - 1].contains("-")){
-                           partOfConstant = partOfConstant * -1;
-                        }
-                     }catch(Exception e){}
-
-                     if(!passedEqualSign){
-                        partOfConstant = partOfConstant * -1;
-                     }
+        String[] equationLine =  equationsList.get(i).toLowerCase().split(String.format("((?<=%1$s)|(?=%1$s))", "[-+=]"));
+            for(int j = 0; j < equationLine.length; j++){
+                if(equationLine[j].matches("[0-9]+")){
+                    partOfConstant = getCoefficient(equationLine, passedEqualSign, j);
                      constant += partOfConstant;
                 }
-                else if (Character.isLetter(splitByOperatorRaw[j].charAt(splitByOperatorRaw[j].length() - 1))){
+                else if (Character.isLetter(equationLine[j].charAt(equationLine[j].length() - 1))){
                     coefficient = 1.0; 
-                    if (splitByOperatorRaw[j].length() > 1){
-                        coefficient = Double.parseDouble(splitByOperatorRaw[j].substring(0,(splitByOperatorRaw[j].length() - 1)));
+                    if (equationLine[j].length() > 1){
+                        coefficient = Double.parseDouble(equationLine[j].substring(0,(equationLine[j].length() - 1)));
                     }
                     if(passedEqualSign){
                         coefficient = coefficient * -1;
                     }
                     try{
-                        if(splitByOperatorRaw[j - 1].contains("-")){
+                        if(equationLine[j - 1].contains("-")){
                            coefficient = coefficient * -1;
                         }
                      }catch(Exception e){}
 
                     for(int k = 0; k < varList.size(); k++){
-                        if(varList.get(k).charAt(0) == splitByOperatorRaw[j].charAt(splitByOperatorRaw[j].length() - 1)){
-                            matrix.get(i).set(k,coefficient);
+                        if(varList.get(k).charAt(0) == equationLine[j].charAt(equationLine[j].length() - 1)){
+                            matrix.get(i).set(k,coefficient); //inserts the value of the variable coefficient at the specfic index that its in the variable list
                         }
                     }
                 }
-                else if(splitByOperatorRaw[j].contains("=")){
+                else if(equationLine[j].contains("=")){
                     passedEqualSign = true;
                  }
-                if (j == splitByOperatorRaw.length - 1){
+                if (j == equationLine.length - 1){
                     matrix.get(i).add(constant);
                 }
         
@@ -144,5 +135,25 @@ public class SolveData {
 
     }
     return matrix;
+    }
+    /**
+     * 
+     * @param splitByOperatorRaw the initial array it is pulling from
+     * @param passedEqualSign if the equal sign has been seen yet
+     * @param j the index of the current part of the array that is being delt with
+     * @return
+     */
+    private int getCoefficient(String[] equationLine, boolean passedEqualSign, int j){
+        int partOfConstant = Integer.parseInt(equationLine[j]);
+        try{
+            if(equationLine[j - 1].contains("-")){
+               partOfConstant = partOfConstant * -1;
+            }
+         }catch(Exception e){}
+
+         if(!passedEqualSign){
+            partOfConstant = partOfConstant * -1;
+         }
+         return partOfConstant;
     }
 }
