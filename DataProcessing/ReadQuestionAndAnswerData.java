@@ -10,11 +10,7 @@ public class ReadQuestionAndAnswerData extends ReadData{
    * *@param contentLine the content of each line
    * */
     protected void addContentLine(String contentLine){
-<<<<<<< HEAD
-        cleanData(contentLine);
-=======
         contentLine = contentLine.toLowerCase();
->>>>>>> cbd9f02eac4cf2571ccee563a946ead8c97c9183
         if(!contentLine.isEmpty()){
             if(contentLine.contains("=") || contentLine.contains("/")){
                 data.get(questionCount).add(contentLine);
