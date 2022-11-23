@@ -68,7 +68,6 @@ public class CompareData {
                 score++;
             }
         }
-
         return score;
     }
 }
