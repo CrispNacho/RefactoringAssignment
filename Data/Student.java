@@ -29,12 +29,7 @@ public class Student {
         getStudentInfo();
 
         getQuestionOrAnswer();
-    }
 
-    /**
-   * *Checks all answers from the user's responses
-   * */
-    public void checkAnswer() {
         if (fileType.equals("q")) {
             getQuestions();
             solveQuestion();
