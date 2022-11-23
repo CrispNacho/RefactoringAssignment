@@ -9,6 +9,7 @@ public class ValidateFile {
     /**
    * *Validates the user input of the file and is repeatedly asked until the file is valid
    * *@param question the question that is asked to the user
+   *  @return the validated user input
    * */
     public String fileValidation(String question){
         System.out.println(question);
@@ -24,6 +25,10 @@ public class ValidateFile {
         return userInput;
     }
 
+    /**
+     * Validates the user input and will repeatedly ask user until they enter a valid response
+     * @return the validated user response
+     */
     public String responseValidation() {
         System.out.println("Do you want to get question or answer (Q/A)?: ");
         String userInput = reader.nextLine();

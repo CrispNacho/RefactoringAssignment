@@ -15,7 +15,10 @@ public class SolveData {
     }
 
 
-    //Establishes and creates the solution list to get needed solutions
+    /**
+     * Establishes and creates the solution list to get needed solutions
+     * @return the created solution list
+     */
     public ArrayList<String> createSolutionList() {
         ArrayList<String> varList = getVariables();
         
@@ -67,7 +70,10 @@ public class SolveData {
         return polishedAnswers;
     }
 
-    //Obtains the different variables needed for solving
+    /**
+     * Obtains the different variables needed for solving
+     * @return the list of the shown variables
+     */
     private ArrayList<String> getVariables() {   
         String equation = equationsList.get(0);
         ArrayList<String> varList = new ArrayList<String>();

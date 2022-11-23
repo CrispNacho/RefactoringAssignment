@@ -13,7 +13,9 @@ public class ReadStudentResponseOrStudentData extends ReadData{
         data.add(contentRow);
     }
 
-    //Removes the header by removing the first index
+    /**
+     * Removes the header by removing the first index
+     */
     public void removeHeader(){
         data.remove(0);
     }
