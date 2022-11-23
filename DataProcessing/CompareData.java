@@ -19,7 +19,10 @@ public class CompareData {
         this.studentInfo = studentInfo;
     }
 
-    //Generates the score for the user
+    /**
+     * Generates the score for the user
+     * @return the generated score list
+     */
     public ArrayList<ArrayList<String>> generateScoreList() {
         createEmptyScoreList();
         compareStudents();
@@ -27,7 +30,9 @@ public class CompareData {
         return scores;
     }
 
-    //Establishes an empty score list
+    /**
+     * Create an empty score list for all students known
+     */
     private void createEmptyScoreList() {
         scores = new ArrayList<ArrayList<String>>();
         for (ArrayList<String> row: studentInfo) {
@@ -37,7 +42,9 @@ public class CompareData {
         }
     }
 
-    //Compares the student data
+    /**
+     * Compares the correct answers to the student responses. Goes through each student
+     */
     private void compareStudents() {
         for (int i = 0; i < studentResponses.size(); i++) {
             // Starting score of 0

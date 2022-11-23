@@ -8,7 +8,9 @@ abstract class ReadData {
     private String fileName;
     protected ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
     
-    //Stores the data into teh data structure
+    /**
+     * Read through each line of the file and stores data into the data array
+     */
     public void storeData(){
         BufferedReader br = null;
             try{
@@ -37,7 +39,10 @@ abstract class ReadData {
         }
     }
 
-    //Gets the array
+    /**
+     * Returns the array that was generated
+     * @return generated data array
+     */
     public ArrayList<ArrayList<String>> getArray(){
         return data;
     }

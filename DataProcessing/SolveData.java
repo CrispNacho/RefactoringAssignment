@@ -15,7 +15,10 @@ public class SolveData {
     }
 
 
-    //Establishes and creates the solution list to get needed solutions
+    /**
+     * Establishes and creates the solution list to get needed solutions
+     * @return the created solution list
+     */
     public ArrayList<String> createSolutionList() {
         ArrayList<String> varList = getVariables();
         
@@ -33,7 +36,7 @@ public class SolveData {
         // Size of matrix without constants
         int matrixSize = varList.size();
         ArrayList<Double> answers = new ArrayList<Double>(Collections.nCopies(matrixSize, 0.0));
-		ArrayList<String> polishedAnswers = new ArrayList<String>(Collections.nCopies(matrixSize, ""));
+		ArrayList<String> polishedAnswers = new ArrayList<String>();
 
         // Forward Elimination
 		for(int i = 0; i < matrixSize-1; i++) {
@@ -61,13 +64,20 @@ public class SolveData {
 		// Add variables to the answers 
 		// x=3, y=5, etc...
 		for (int row = 0; row < matrixSize; row++) {
-            polishedAnswers.set(row, varList.get(row) + "=" + answers.get(row));
+            if (Double.isInfinite(answers.get(row))) {
+                polishedAnswers.add("n/a");
+                break;
+            }
+            polishedAnswers.add(varList.get(row) + "=" + answers.get(row));
 		}
         
         return polishedAnswers;
     }
 
-    //Obtains the different variables needed for solving
+    /**
+     * Obtains the different variables needed for solving
+     * @return the list of the shown variables
+     */
     private ArrayList<String> getVariables() {   
         String equation = equationsList.get(0);
         ArrayList<String> varList = new ArrayList<String>();
