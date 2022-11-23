@@ -10,18 +10,27 @@ public class Student extends Data{
     private String responseFilePath;
     private ArrayList<ArrayList<String>> studentResponseList;
 
+    /**
+   * *Gets all neccessary student information and answers
+   * */
     public Student() {
         getStudentInfo();
 
         getQuestionOrAnswer();   
     }
 
+    /**
+   * *Checks all answers from the user's responses
+   * */
     public void checkAnswer() {
         if (fileType.equals("a")) {
             checkStudentResponse();
         }
     }
 
+    /**
+   * *Gets the student input on the file paths for student information
+   * */
     private void getStudentInfo() {
         studentFilePath = validater.fileValidation("Please enter the file path to the student file: ");
 
@@ -31,6 +40,9 @@ public class Student extends Data{
         studentInfoList = studentInfo.getArray();
     }
 
+    /**
+   * *Gets the student input on the file paths for student responses
+   * */
     private void checkStudentResponse() {
         responseFilePath = validater.fileValidation("Please enter the file path to the student response file: ");
 
@@ -42,6 +54,9 @@ public class Student extends Data{
         compareResponses();
     }
 
+    /**
+   * *Compares the student respones for scores and writes them to the score file
+   * */
     private void compareResponses() {
         CompareData comparer = new CompareData(answerList, studentResponseList, studentInfoList);
         ArrayList<ArrayList<String>> scoreList = comparer.generateScoreList();
