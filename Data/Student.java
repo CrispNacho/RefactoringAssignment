@@ -1,12 +1,15 @@
 package Data;
 import DataProcessing.CompareData;
 import DataProcessing.ExportData;
+import DataProcessing.ValidateFile;
 import DataProcessing.ReadStudentResponseOrStudentData;
 import DataProcessing.ReadQuestionAndAnswerData;
 import DataProcessing.SolveData;
 import java.util.ArrayList;
 
 public class Student extends Data{
+    protected ValidateFile validater = new ValidateFile();
+    protected ExportData exporter = new ExportData();
     private String studentFilePath;
     private ArrayList<ArrayList<String>> studentInfoList;
     private String responseFilePath;
